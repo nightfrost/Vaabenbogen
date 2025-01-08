@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{37EF5D7C-3097-4A4E-94B4-B6B2DE80C040}|VaabenbogenProvider\\VaabenbogenProvider.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenprovider\\models\\jaeger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37EF5D7C-3097-4A4E-94B4-B6B2DE80C040}|VaabenbogenProvider\\VaabenbogenProvider.csproj|solutionrelative:vaabenbogenprovider\\models\\jaeger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Jaeger.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenProvider\\Models\\Jaeger.cs",
+              "RelativeDocumentMoniker": "VaabenbogenProvider\\Models\\Jaeger.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenProvider\\Models\\Jaeger.cs",
+              "RelativeToolTip": "VaabenbogenProvider\\Models\\Jaeger.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAtwB4AAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T21:17:23.761Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
