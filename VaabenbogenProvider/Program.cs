@@ -1,6 +1,7 @@
-
+﻿
 using Microsoft.EntityFrameworkCore;
 using VaabenbogenProvider.Data;
+using VaabenbogenProvider.Controllers;
 
 namespace VaabenbogenProvider
 {
@@ -29,6 +30,12 @@ namespace VaabenbogenProvider
 
 
             app.MapControllers();
+
+            app.MapJaegerEndpoints();
+
+            app.MapVaabenEndpoints();
+
+                        app.MapVirksomhedEndpoints();
 
             app.Run();
         }
