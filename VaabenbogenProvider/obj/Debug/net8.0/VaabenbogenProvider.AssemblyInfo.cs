@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VaabenbogenProvider")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+289af166dc58e2f2668f6708f4701224e9a8b9b9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6308454d00944b312075773dde4875ce1adcddd0")]
 [assembly: System.Reflection.AssemblyProductAttribute("VaabenbogenProvider")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VaabenbogenProvider")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

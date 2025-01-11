@@ -1,6 +1,6 @@
 ﻿namespace VaabenbogenProvider.Models
 {
-    public class Virksomhed : IEquatable<Virksomhed?>
+    public class Virksomhed : Ejer, IEquatable<Virksomhed?>
     {
         public int Id { get; set; }
         public string Cvr { get; set; }
@@ -8,11 +8,8 @@
         public string Adresse { get; set; }
         public string ZipCode { get; set; }
         public string By { get; set; }
-        public string Telefon { get; set; }
-        public string Email { get; set; }
         public DateOnly StartDato { get; set; }
         public DateOnly? EndDato { get; set; }
-        public List<Vaaben>? TildelteVaaben { get; set; }
 
         public Virksomhed()
         {
@@ -30,7 +27,7 @@
             Email = email ?? throw new ArgumentNullException(nameof(email));
             StartDato = startDato;
             EndDato = endDato;
-            TildelteVaaben = tildelteVaaben;
+            TilknyttedeVaaben = tildelteVaaben;
         }
 
         public override bool Equals(object? obj)
@@ -50,7 +47,7 @@
                    Email == other.Email &&
                    StartDato.Equals(other.StartDato) &&
                    EqualityComparer<DateOnly?>.Default.Equals(EndDato, other.EndDato) &&
-                   EqualityComparer<List<Vaaben>?>.Default.Equals(TildelteVaaben, other.TildelteVaaben);
+                   EqualityComparer<List<Vaaben>?>.Default.Equals(TilknyttedeVaaben, other.TilknyttedeVaaben);
         }
 
         public override int GetHashCode()
@@ -65,7 +62,7 @@
             hash.Add(Email);
             hash.Add(StartDato);
             hash.Add(EndDato);
-            hash.Add(TildelteVaaben);
+            hash.Add(TilknyttedeVaaben);
             return hash.ToHashCode();
         }
 

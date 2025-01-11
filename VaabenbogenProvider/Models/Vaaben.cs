@@ -1,8 +1,10 @@
 ﻿
 
+
+
 namespace VaabenbogenProvider.Models
 {
-    public class Vaaben(int id, string navn, string fabrikat, string ladefunktion, string loebenummer, string type) : IEquatable<Vaaben?>
+    public class Vaaben(int id, string navn, string fabrikat, string ladefunktion, string loebenummer, string type, Ejer ejer) : IEquatable<Vaaben?>
     {
         public int Id { get; set; } = id;
         public string Navn { get; set; } = navn ?? throw new ArgumentNullException(nameof(navn));
@@ -10,6 +12,7 @@ namespace VaabenbogenProvider.Models
         public string Ladefunktion { get; set; } = ladefunktion ?? throw new ArgumentNullException(nameof(ladefunktion));
         public string Loebenummer { get; set; } = loebenummer ?? throw new ArgumentNullException(nameof(loebenummer));
         public string Type { get; set; } = type ?? throw new ArgumentNullException(nameof(type));
+        public Ejer Ejer { get; set; } = ejer ?? throw new ArgumentNullException(nameof(ejer));
 
         public override bool Equals(object? obj)
         {
@@ -24,12 +27,13 @@ namespace VaabenbogenProvider.Models
                    Fabrikat == other.Fabrikat &&
                    Ladefunktion == other.Ladefunktion &&
                    Loebenummer == other.Loebenummer &&
-                   Type == other.Type;
+                   Type == other.Type &&
+                   EqualityComparer<Ejer>.Default.Equals(Ejer, other.Ejer);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, Navn, Fabrikat, Ladefunktion, Loebenummer, Type);
+            return HashCode.Combine(Id, Navn, Fabrikat, Ladefunktion, Loebenummer, Type, Ejer);
         }
 
         public static bool operator ==(Vaaben? left, Vaaben? right)

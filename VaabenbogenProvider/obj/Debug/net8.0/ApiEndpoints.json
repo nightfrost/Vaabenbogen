@@ -150,156 +150,6 @@
     "EndpointName": "DeleteJaeger"
   },
   {
-    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_0",
-    "RelativePath": "api/Virksomhed/",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[VaabenbogenProvider.Models.Virksomhed, VaabenbogenProvider, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "application/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "Tags": [
-      "Virksomhed"
-    ],
-    "EndpointName": "GetAllVirksomheds"
-  },
-  {
-    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_3",
-    "RelativePath": "api/Virksomhed/",
-    "HttpMethod": "POST",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "virksomhed",
-        "Type": "VaabenbogenProvider.Models.Virksomhed",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "VaabenbogenProvider.Models.Virksomhed",
-        "MediaTypes": [
-          "application/json"
-        ],
-        "StatusCode": 201
-      }
-    ],
-    "Tags": [
-      "Virksomhed"
-    ],
-    "EndpointName": "CreateVirksomhed"
-  },
-  {
-    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_1",
-    "RelativePath": "api/Virksomhed/{id}",
-    "HttpMethod": "GET",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "VaabenbogenProvider.Models.Virksomhed",
-        "MediaTypes": [
-          "application/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 404
-      }
-    ],
-    "Tags": [
-      "Virksomhed"
-    ],
-    "EndpointName": "GetVirksomhedById"
-  },
-  {
-    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_2",
-    "RelativePath": "api/Virksomhed/{id}",
-    "HttpMethod": "PUT",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "virksomhed",
-        "Type": "VaabenbogenProvider.Models.Virksomhed",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 404
-      }
-    ],
-    "Tags": [
-      "Virksomhed"
-    ],
-    "EndpointName": "UpdateVirksomhed"
-  },
-  {
-    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_4",
-    "RelativePath": "api/Virksomhed/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": false,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      },
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 404
-      }
-    ],
-    "Tags": [
-      "Virksomhed"
-    ],
-    "EndpointName": "DeleteVirksomhed"
-  },
-  {
     "ContainingType": "VaabenbogenProvider.Controllers.VaabenEndpoints\u002B\u003C\u003Ec",
     "Method": "\u003CMapVaabenEndpoints\u003Eb__0_0",
     "RelativePath": "api/Vaaben/",
@@ -448,5 +298,155 @@
       "Vaaben"
     ],
     "EndpointName": "DeleteVaaben"
+  },
+  {
+    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_0",
+    "RelativePath": "api/Virksomhed/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[VaabenbogenProvider.Models.Virksomhed, VaabenbogenProvider, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Virksomhed"
+    ],
+    "EndpointName": "GetAllVirksomheds"
+  },
+  {
+    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_3",
+    "RelativePath": "api/Virksomhed/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "virksomhed",
+        "Type": "VaabenbogenProvider.Models.Virksomhed",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "VaabenbogenProvider.Models.Virksomhed",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      }
+    ],
+    "Tags": [
+      "Virksomhed"
+    ],
+    "EndpointName": "CreateVirksomhed"
+  },
+  {
+    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_1",
+    "RelativePath": "api/Virksomhed/{id}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "VaabenbogenProvider.Models.Virksomhed",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Virksomhed"
+    ],
+    "EndpointName": "GetVirksomhedById"
+  },
+  {
+    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_2",
+    "RelativePath": "api/Virksomhed/{id}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "virksomhed",
+        "Type": "VaabenbogenProvider.Models.Virksomhed",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Virksomhed"
+    ],
+    "EndpointName": "UpdateVirksomhed"
+  },
+  {
+    "ContainingType": "VaabenbogenProvider.Controllers.VirksomhedEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapVirksomhedEndpoints\u003Eb__0_4",
+    "RelativePath": "api/Virksomhed/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Virksomhed"
+    ],
+    "EndpointName": "DeleteVirksomhed"
   }
 ]
