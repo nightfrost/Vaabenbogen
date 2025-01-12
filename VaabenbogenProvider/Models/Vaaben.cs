@@ -4,15 +4,30 @@
 
 namespace VaabenbogenProvider.Models
 {
-    public class Vaaben(int id, string navn, string fabrikat, string ladefunktion, string loebenummer, string type, Ejer ejer) : IEquatable<Vaaben?>
+    public class Vaaben : IEquatable<Vaaben?>
     {
-        public int Id { get; set; } = id;
-        public string Navn { get; set; } = navn ?? throw new ArgumentNullException(nameof(navn));
-        public string Fabrikat { get; set; } = fabrikat ?? throw new ArgumentNullException(nameof(fabrikat));
-        public string Ladefunktion { get; set; } = ladefunktion ?? throw new ArgumentNullException(nameof(ladefunktion));
-        public string Loebenummer { get; set; } = loebenummer ?? throw new ArgumentNullException(nameof(loebenummer));
-        public string Type { get; set; } = type ?? throw new ArgumentNullException(nameof(type));
-        public Ejer Ejer { get; set; } = ejer ?? throw new ArgumentNullException(nameof(ejer));
+        public int Id { get; set; }
+        public string Navn { get; set; } 
+        public string Fabrikat { get; set; } 
+        public string Ladefunktion { get; set; }
+        public string Loebenummer { get; set; }
+        public string Type { get; set; }
+        public Ejer Ejer { get; set; }
+
+        public Vaaben()
+        {
+        }
+
+        public Vaaben(int id, string navn, string fabrikat, string ladefunktion, string loebenummer, string type, Ejer ejer)
+        {
+            Id = id;
+            Navn = navn ?? throw new ArgumentNullException(nameof(navn));
+            Fabrikat = fabrikat ?? throw new ArgumentNullException(nameof(fabrikat));
+            Ladefunktion = ladefunktion ?? throw new ArgumentNullException(nameof(ladefunktion));
+            Loebenummer = loebenummer ?? throw new ArgumentNullException(nameof(loebenummer));
+            Type = type ?? throw new ArgumentNullException(nameof(type));
+            Ejer = ejer ?? throw new ArgumentNullException(nameof(ejer));
+        }
 
         public override bool Equals(object? obj)
         {

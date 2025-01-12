@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Hjem";
+}
+
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="display-4">Velkommen</h1>
+        <p>Administrér din Våbenbog her.</p>
+    </div>
+
+    <div class="row mb-4">
+        <!-- News Section -->
+        <div class="col-md-6">
+            <h3>Seneste opdateringer</h3>
+            <ul class="list-group">
+                <li class="list-group-item">Nyhed 3 - Tilføjet udskrivelse til Politiet</li>
+                <li class="list-group-item">Nyhed 2 - Tilføjet Våben</li>
+                <li class="list-group-item">Nyhed 1 - Start</li>
+            </ul>
+        </div>
+
+        <!-- Actions Section -->
+        <div class="col-md-6">
+            <h3>Hurtig adgang</h3>
+            <div class="d-grid gap-3">
+                <a class="btn btn-primary" asp-controller="Jaeger" asp-action="Create">Opret Jæger</a>
+                <a class="btn btn-primary" asp-controller="Virksomhed" asp-action="Create">Opret Firma</a>
+                <a class="btn btn-primary" asp-controller="Vaaben" asp-action="Create">Indregistrér våben</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Search Index -->
+        <div class="col-12">
+            <h3>Søg i Våbenbogen</h3>
+            <form method="get" action="/Search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Søg efter Våben, Jægere, eller virksomheder..." name="query" />
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,76 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\models\\vaaben.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\models\\vaaben.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\models\\ejer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\models\\ejer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\models\\soegvaaben.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\models\\soegvaaben.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\models\\jaeger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\models\\jaeger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\jaeger\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\jaeger\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\jaeger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\jaeger\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\controllers\\jaegercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\controllers\\jaegercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\virksomhed\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\virksomhed\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\vaaben\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\vaaben\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\vaaben\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\vaaben\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\controllers\\vaabencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\controllers\\vaabencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\controllers\\virksomhedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\controllers\\virksomhedcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|c:\\users\\nightfrost\\source\\repos\\vaabenbogen\\vaabenbogenconsumer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F98B05A-66EE-4167-B61B-B0C25D2D1387}|VaabenbogenConsumer\\VaabenbogenConsumer.csproj|solutionrelative:vaabenbogenconsumer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +78,235 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Jaeger\\Create.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Jaeger\\Create.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Jaeger\\Create.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Jaeger\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-12T10:52:39.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Jaeger.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\Jaeger.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Models\\Jaeger.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\Jaeger.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Models\\Jaeger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T10:51:14.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VaabenController.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\VaabenController.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Controllers\\VaabenController.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\VaabenController.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Controllers\\VaabenController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAawDIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T20:19:19.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Ejer.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\Ejer.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Models\\Ejer.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\Ejer.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Models\\Ejer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T18:59:07.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "VirksomhedController.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\VirksomhedController.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Controllers\\VirksomhedController.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\VirksomhedController.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Controllers\\VirksomhedController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T18:53:33.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "JaegerController.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\JaegerController.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Controllers\\JaegerController.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\JaegerController.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Controllers\\JaegerController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowBMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T18:39:43.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-11T18:17:32.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T18:09:57.078Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SoegVaaben.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\SoegVaaben.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Models\\SoegVaaben.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\SoegVaaben.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Models\\SoegVaaben.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAADVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T17:39:56.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Jaeger\\Index.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Jaeger\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Jaeger\\Index.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Jaeger\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-12T10:48:25.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Virksomhed\\Index.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Virksomhed\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Virksomhed\\Index.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Virksomhed\\Index.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAHEAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-12T10:47:46.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Vaaben\\Create.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Vaaben\\Create.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Vaaben\\Create.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Vaaben\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-12T10:38:09.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Program.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Program.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Program.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-12T10:28:59.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-12T10:27:42.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Vaaben\\Index.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Vaaben\\Index.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Vaaben\\Index.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Vaaben\\Index.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADsAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-11T18:35:41.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "VaabenbogenConsumer\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-11T18:09:17.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Vaaben.cs",
+              "DocumentMoniker": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\Vaaben.cs",
+              "RelativeDocumentMoniker": "VaabenbogenConsumer\\Models\\Vaaben.cs",
+              "ToolTip": "C:\\Users\\nightfrost\\source\\repos\\Vaabenbogen\\VaabenbogenConsumer\\Models\\Vaaben.cs",
+              "RelativeToolTip": "VaabenbogenConsumer\\Models\\Vaaben.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAwwB4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T20:40:55.592Z",
+              "EditorCaption": ""
             }
           ]
         }

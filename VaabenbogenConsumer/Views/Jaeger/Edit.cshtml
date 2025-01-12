@@ -1,0 +1,89 @@
+﻿@model VaabenbogenConsumer.Models.Jaeger
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Jaeger</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fornavn" class="control-label"></label>
+                <input asp-for="Fornavn" class="form-control" />
+                <span asp-validation-for="Fornavn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Efternavn" class="control-label"></label>
+                <input asp-for="Efternavn" class="form-control" />
+                <span asp-validation-for="Efternavn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cpr" class="control-label"></label>
+                <input asp-for="Cpr" class="form-control" />
+                <span asp-validation-for="Cpr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Foedselsdato" class="control-label"></label>
+                <input asp-for="Foedselsdato" class="form-control" />
+                <span asp-validation-for="Foedselsdato" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Telefon" class="control-label"></label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobil" class="control-label"></label>
+                <input asp-for="Mobil" class="form-control" />
+                <span asp-validation-for="Mobil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JaegerId" class="control-label"></label>
+                <input asp-for="JaegerId" class="form-control" />
+                <span asp-validation-for="JaegerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Created" class="control-label"></label>
+                <input asp-for="Created" class="form-control" />
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Updated" class="control-label"></label>
+                <input asp-for="Updated" class="form-control" />
+                <span asp-validation-for="Updated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UpdatedBy" class="control-label"></label>
+                <input asp-for="UpdatedBy" class="form-control" />
+                <span asp-validation-for="UpdatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

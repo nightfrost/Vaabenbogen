@@ -2,7 +2,6 @@
 {
     public class Virksomhed : Ejer, IEquatable<Virksomhed?>
     {
-        public int Id { get; set; }
         public string Cvr { get; set; }
         public string Navn { get; set; }
         public string Adresse { get; set; }
@@ -15,19 +14,30 @@
         {
         }
 
-        public Virksomhed(int id, string cvr, string navn, string adresse, string zipCode, string by, string telefon, string email, DateOnly startDato, DateOnly? endDato, List<Vaaben>? tildelteVaaben)
+        // Constructor with minimal parameters
+        public Virksomhed(int id, string cvr, string navn, string adresse, string zipCode, string by, DateOnly startDato, DateOnly? endDato)
+            : base(id, string.Empty, string.Empty, null) // Call base class constructor with default values
         {
-            Id = id;
             Cvr = cvr ?? throw new ArgumentNullException(nameof(cvr));
             Navn = navn ?? throw new ArgumentNullException(nameof(navn));
             Adresse = adresse ?? throw new ArgumentNullException(nameof(adresse));
             ZipCode = zipCode ?? throw new ArgumentNullException(nameof(zipCode));
             By = by ?? throw new ArgumentNullException(nameof(by));
-            Telefon = telefon ?? throw new ArgumentNullException(nameof(telefon));
-            Email = email ?? throw new ArgumentNullException(nameof(email));
             StartDato = startDato;
             EndDato = endDato;
-            TilknyttedeVaaben = tildelteVaaben;
+        }
+
+        // Constructor with all parameters
+        public Virksomhed(int id, string cvr, string navn, string adresse, string zipCode, string by, string telefon, string email, DateOnly startDato, DateOnly? endDato)
+            : base(id, telefon, email, null)
+        {
+            Cvr = cvr ?? throw new ArgumentNullException(nameof(cvr));
+            Navn = navn ?? throw new ArgumentNullException(nameof(navn));
+            Adresse = adresse ?? throw new ArgumentNullException(nameof(adresse));
+            ZipCode = zipCode ?? throw new ArgumentNullException(nameof(zipCode));
+            By = by ?? throw new ArgumentNullException(nameof(by));
+            StartDato = startDato;
+            EndDato = endDato;
         }
 
         public override bool Equals(object? obj)
@@ -46,8 +56,7 @@
                    Telefon == other.Telefon &&
                    Email == other.Email &&
                    StartDato.Equals(other.StartDato) &&
-                   EqualityComparer<DateOnly?>.Default.Equals(EndDato, other.EndDato) &&
-                   EqualityComparer<List<Vaaben>?>.Default.Equals(TilknyttedeVaaben, other.TilknyttedeVaaben);
+                   EqualityComparer<DateOnly?>.Default.Equals(EndDato, other.EndDato);
         }
 
         public override int GetHashCode()
@@ -62,7 +71,6 @@
             hash.Add(Email);
             hash.Add(StartDato);
             hash.Add(EndDato);
-            hash.Add(TilknyttedeVaaben);
             return hash.ToHashCode();
         }
 

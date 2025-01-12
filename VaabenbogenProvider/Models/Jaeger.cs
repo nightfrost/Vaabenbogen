@@ -2,7 +2,6 @@
 {
     public class Jaeger : Ejer, IEquatable<Jaeger?>
     {
-        public int Id { get; set; }
         public string Fornavn { get; set; }
         public string Efternavn { get; set; }
         public DateOnly Foedselsdato { get; set; }
@@ -12,27 +11,24 @@
         {
         }
 
+        // Constructor with fewer parameters
         public Jaeger(int id, string fornavn, string efternavn, DateOnly foedselsdato, string jaegerId, string email)
+            : base(id, string.Empty, email, null) // Call base class constructor with default values
         {
-            Id = id;
             Fornavn = fornavn ?? throw new ArgumentNullException(nameof(fornavn));
             Efternavn = efternavn ?? throw new ArgumentNullException(nameof(efternavn));
             Foedselsdato = foedselsdato;
             JaegerId = jaegerId ?? throw new ArgumentNullException(nameof(jaegerId));
-            Email = email ?? throw new ArgumentNullException(nameof(email));
         }
 
-        public Jaeger(int id, string fornavn, string efternavn, DateOnly foedselsdato, string jaegerId, string? telefon, string? mobil, string email, List<Vaaben>? tilknyttedeVaaben)
+        // Constructor with all parameters
+        public Jaeger(int id, string fornavn, string efternavn, DateOnly foedselsdato, string jaegerId, string? telefon, string? mobil, string email)
+            : base(id, telefon, email, mobil)
         {
-            Id = id;
             Fornavn = fornavn ?? throw new ArgumentNullException(nameof(fornavn));
             Efternavn = efternavn ?? throw new ArgumentNullException(nameof(efternavn));
             Foedselsdato = foedselsdato;
             JaegerId = jaegerId ?? throw new ArgumentNullException(nameof(jaegerId));
-            Telefon = telefon ?? throw new ArgumentNullException(nameof(telefon));
-            Mobil = mobil;
-            Email = email ?? throw new ArgumentNullException(nameof(email));
-            TilknyttedeVaaben = tilknyttedeVaaben;
         }
 
         public override bool Equals(object? obj)
@@ -50,8 +46,7 @@
                    JaegerId == other.JaegerId &&
                    Telefon == other.Telefon &&
                    Mobil == other.Mobil &&
-                   Email == other.Email &&
-                   EqualityComparer<ICollection<Vaaben>?>.Default.Equals(TilknyttedeVaaben, other.TilknyttedeVaaben);
+                   Email == other.Email;
         }
 
         public override int GetHashCode()
@@ -65,7 +60,6 @@
             hash.Add(Telefon);
             hash.Add(Mobil);
             hash.Add(Email);
-            hash.Add(TilknyttedeVaaben);
             return hash.ToHashCode();
         }
     }

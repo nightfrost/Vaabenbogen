@@ -1,0 +1,101 @@
+﻿@model IEnumerable<VaabenbogenConsumer.Models.Jaeger>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Jægerlisten</h1>
+
+<p>
+    <a asp-action="Create">Opret ny</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fornavn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Efternavn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foedselsdato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JaegerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Updated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Efternavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foedselsdato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JaegerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editér</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detajler</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Slet</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

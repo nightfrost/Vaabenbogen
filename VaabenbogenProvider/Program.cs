@@ -35,7 +35,7 @@ namespace VaabenbogenProvider
 
             app.MapVaabenEndpoints();
 
-                        app.MapVirksomhedEndpoints();
+            app.MapVirksomhedEndpoints();
 
             app.Run();
         }
