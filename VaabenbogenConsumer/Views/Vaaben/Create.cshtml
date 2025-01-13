@@ -40,15 +40,14 @@
                 <select asp-for="Status" class="form-control" asp-items="@(new SelectList(ViewBag.StatusOptions))"></select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Gem" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-danger" role="button">Tilbage</a>
             </div>
         </form>
+        <br />
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

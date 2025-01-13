@@ -12,14 +12,16 @@ namespace VaabenbogenConsumer.Models
         [Display(Name = "Postnummer")]
         public string? Zip { get; set; }
         public string? By { get; set; }
+        [Display(Name = "Start dato")]
         public DateOnly? StartDato { get; set; }
+        [Display(Name = "Slut dato")]
         public DateOnly? EndDato { get; set; }
 
         public Virksomhed()
         {
         }
 
-        public Virksomhed(string cvr, string navn, string? adresse, string? zip, string? by, DateOnly? startDato, DateOnly? endDato, int id, string telefon, string email, string mobil, string jaegerId, string createdBy) : base (id, telefon, email, mobil, jaegerId, createdBy)
+        public Virksomhed(string cvr, string navn, string? adresse, string? zip, string? by, DateOnly? startDato, DateOnly? endDato, int id, string telefon, string email, string mobil, string jaegerId, string createdBy) : base(id, telefon, email, mobil, jaegerId, createdBy)
         {
             Cvr = cvr ?? throw new ArgumentNullException(nameof(cvr));
             Navn = navn ?? throw new ArgumentNullException(nameof(navn));
