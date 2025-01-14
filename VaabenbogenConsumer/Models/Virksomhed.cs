@@ -19,9 +19,11 @@ namespace VaabenbogenConsumer.Models
 
         public Virksomhed()
         {
+            Created = DateTime.UtcNow;
+            CreatedBy = "System";
         }
 
-        public Virksomhed(string cvr, string navn, string? adresse, string? zip, string? by, DateOnly? startDato, DateOnly? endDato, int id, string telefon, string email, string mobil, string jaegerId, string createdBy) : base(id, telefon, email, mobil, jaegerId, createdBy)
+        public Virksomhed(string cvr, string navn, string? adresse, string? zip, string? by, DateOnly? startDato, DateOnly? endDato, int id, string telefon, string email, string mobil, string jaegerId) : base(id, telefon, email, mobil, jaegerId)
         {
             Cvr = cvr ?? throw new ArgumentNullException(nameof(cvr));
             Navn = navn ?? throw new ArgumentNullException(nameof(navn));

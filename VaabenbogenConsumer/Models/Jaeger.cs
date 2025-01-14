@@ -14,14 +14,15 @@ namespace VaabenbogenConsumer.Models
 
         public Jaeger()
         {
+            Created = DateTime.UtcNow;
+            CreatedBy = "System";
         }
 
-        public Jaeger(string fornavn, string efternavn, string cpr, DateOnly foedselsdato, int id, string telefon, string email, string mobil, string jaegerId, string createdBy) : base(id, telefon, email, mobil, jaegerId, createdBy)
+        public Jaeger(string fornavn, string efternavn, string cpr, int id, string telefon, string email, string mobil, string jaegerId) : base(id, telefon, email, mobil, jaegerId)
         {
             Fornavn = fornavn ?? throw new ArgumentNullException(nameof(fornavn));
             Efternavn = efternavn ?? throw new ArgumentNullException(nameof(efternavn));
             Cpr = cpr ?? throw new ArgumentNullException(nameof(cpr));
-            Foedselsdato = foedselsdato;
         }
 
         public override bool Equals(object? obj)

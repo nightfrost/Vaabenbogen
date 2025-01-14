@@ -54,7 +54,7 @@ namespace VaabenbogenConsumer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Fornavn,Efternavn,Cpr,Foedselsdato,Id,Telefon,Email,Mobil,JaegerId,Created,CreatedBy,Updated,UpdatedBy")] Jaeger jaeger)
+        public async Task<IActionResult> Create([Bind("Fornavn,Efternavn,Cpr,Id,Telefon,Email,Mobil,JaegerId")] Jaeger jaeger)
         {
             if (ModelState.IsValid)
             {

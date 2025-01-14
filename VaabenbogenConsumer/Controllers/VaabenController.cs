@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VaabenbogenConsumer.Data;
+using VaabenbogenConsumer.Helpers;
 using VaabenbogenConsumer.Models;
 
 namespace VaabenbogenConsumer.Controllers
@@ -46,9 +49,9 @@ namespace VaabenbogenConsumer.Controllers
         // GET: Vaaben/Create
         public IActionResult Create()
         {
-            ViewBag.LadefunktionOptions = Enum.GetValues(typeof(Ladefunktion)).Cast<Ladefunktion>();
-            ViewBag.TypeOptions = Enum.GetValues(typeof(VaabenType)).Cast<VaabenType>();
-            ViewBag.StatusOptions = Enum.GetValues(typeof(VaabenStatus)).Cast<VaabenStatus>();
+            ViewBag.StatusOptions = DropdownHelper.VaabenStatusDropdownOptions();
+            ViewBag.LadefunktionOptions = DropdownHelper.LadefunktionDropdownOptions();
+            ViewBag.TypeOptions = DropdownHelper.VaabenTypeDropdownOptions();
             return View();
         }
 
@@ -75,6 +78,10 @@ namespace VaabenbogenConsumer.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.StatusOptions = DropdownHelper.VaabenStatusDropdownOptions();
+            ViewBag.LadefunktionOptions = DropdownHelper.LadefunktionDropdownOptions();
+            ViewBag.TypeOptions = DropdownHelper.VaabenTypeDropdownOptions();
 
             var vaaben = await _context.Vaaben.FindAsync(id);
             if (vaaben == null)

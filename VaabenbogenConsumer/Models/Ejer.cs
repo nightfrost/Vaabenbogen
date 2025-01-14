@@ -11,18 +11,20 @@ namespace VaabenbogenConsumer.Models
         [Display(Name = "JægerID")]
         public string JaegerId { get; set; }
         [Display(Name = "Oprettet")]
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
         [Display(Name = "Oprettet af")]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         [Display(Name = "Opdateret")]
         public DateTime? Updated { get; set; }
         [Display(Name = "Opdateret af")]
         public string? UpdatedBy { get; set; }
         public Ejer()
         {
+            Created = DateTime.UtcNow;
+            CreatedBy = "System";
         }
 
-        public Ejer(int id, string telefon, string email, string mobil, string jaegerId, string createdBy)
+        public Ejer(int id, string telefon, string email, string mobil, string jaegerId)
         {
             Id = id;
             Telefon = telefon ?? throw new ArgumentNullException(nameof(telefon));
@@ -30,7 +32,7 @@ namespace VaabenbogenConsumer.Models
             Mobil = mobil ?? throw new ArgumentNullException(nameof(mobil));
             JaegerId = jaegerId ?? throw new ArgumentNullException(nameof(jaegerId));
             Created = DateTime.UtcNow;
-            CreatedBy = createdBy ?? throw new ArgumentNullException(nameof(createdBy));
+            CreatedBy = "System";
         }
     }
 }
