@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using VaabenbogenConsumer.Data;
 using VaabenbogenConsumer.Helpers;
 using VaabenbogenConsumer.Models;
+using VaabenbogenConsumer.Models.ViewModels;
 
 namespace VaabenbogenConsumer.Controllers
 {
@@ -91,11 +92,13 @@ namespace VaabenbogenConsumer.Controllers
             return View(vaaben);
         }
 
-        // GET: Vaaben/Search/Query
-        public async Task<IActionResult> Search([Bind("Id,Navn,Fabrikant,Ladefunktion,Loebenummer,Type,Status")] SoegVaaben soegVaaben)
+        // POST: Vaaben/Search/Query
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Search(SoegVaaben soegVaaben)
         {
-            if (string.IsNullOrWhiteSpace(soegVaaben.Navn) 
-                && string.IsNullOrWhiteSpace(soegVaaben.Fabrikant) 
+            if (string.IsNullOrWhiteSpace(soegVaaben.Navn)
+                && string.IsNullOrWhiteSpace(soegVaaben.Fabrikant)
                 && soegVaaben.Status == null
                 && soegVaaben.Ladefunktion == null
                 && string.IsNullOrWhiteSpace(soegVaaben.Loebenummer)
@@ -132,16 +135,16 @@ namespace VaabenbogenConsumer.Controllers
 
             if (soegVaaben.Type.HasValue)
             {
-                query = query.Where(v => v.Type== soegVaaben.Type.Value);
+                query = query.Where(v => v.Type == soegVaaben.Type.Value);
             }
 
             var queryResult = await query.ToListAsync();
 
             if (queryResult == null || !query.Any())
             {
-                return NotFound();
+                return View(viewName: "Index", queryResult);
             }
-            return View(queryResult);
+            return View(viewName: "Index", model: queryResult);
         }
 
         // POST: Vaaben/Edit/5

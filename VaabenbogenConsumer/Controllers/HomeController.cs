@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using VaabenbogenConsumer.Helpers;
 using VaabenbogenConsumer.Models;
 
 namespace VaabenbogenConsumer.Controllers
@@ -15,6 +16,9 @@ namespace VaabenbogenConsumer.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.StatusOptions = DropdownHelper.VaabenStatusDropdownOptions();
+            ViewBag.LadefunktionOptions = DropdownHelper.LadefunktionDropdownOptions();
+            ViewBag.TypeOptions = DropdownHelper.VaabenTypeDropdownOptions();
             return View();
         }
 
