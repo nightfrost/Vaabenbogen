@@ -4,10 +4,11 @@
     ViewData["Title"] = "Registrér";
 }
 
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-8">
+        <br />
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h1>Opret konto</h1>
+            <h1 class="text-center">Opret konto</h1>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">
