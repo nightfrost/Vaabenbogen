@@ -10,7 +10,7 @@ namespace VaabenbogenConsumer.Helpers
 
         public static List<SelectListItem> VaabenStatusDropdownOptions()
         {
-            return Enum.GetValues(typeof(VaabenStatus))
+            List<SelectListItem> listOfItems = Enum.GetValues(typeof(VaabenStatus))
                 .Cast<VaabenStatus>()
                 .Select(status => new SelectListItem
                 {
@@ -18,11 +18,14 @@ namespace VaabenbogenConsumer.Helpers
                     Text = GetEnumDisplayName(status)
                 })
                 .ToList();
+
+            listOfItems.Add(new SelectListItem() { });
+            return listOfItems;
         }
 
         public static List<SelectListItem> VaabenTypeDropdownOptions()
         {
-            return Enum.GetValues(typeof(VaabenType))
+            List<SelectListItem> listOfItems = Enum.GetValues(typeof(VaabenType))
                 .Cast<VaabenType>()
                 .Select(status => new SelectListItem
                 {
@@ -30,11 +33,13 @@ namespace VaabenbogenConsumer.Helpers
                     Text = GetEnumDisplayName(status)
                 })
                 .ToList();
+            listOfItems.Add(new SelectListItem(){});
+            return listOfItems;
         }
 
         public static List<SelectListItem> LadefunktionDropdownOptions()
         {
-            return Enum.GetValues(typeof(Ladefunktion))
+            List<SelectListItem> listofItems =  Enum.GetValues(typeof(Ladefunktion))
                 .Cast<Ladefunktion>()
                 .Select(status => new SelectListItem
                 {
@@ -42,6 +47,9 @@ namespace VaabenbogenConsumer.Helpers
                     Text = GetEnumDisplayName(status)
                 })
                 .ToList();
+
+            listofItems.Add(new SelectListItem() { });
+            return listofItems;
         }
 
         private static string GetEnumDisplayName(Enum value)

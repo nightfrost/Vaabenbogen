@@ -6,10 +6,9 @@
 
 <h1>Våbenlisten</h1>
 <h3>Her kan du se listen over våben indregistreret i Våbenbogen, eller de resultater som er søgt efter.</h3>
+<br />
+<partial name="_SearchWeaponPartial" model="@(ViewBag.SoegVaabenObject)"/>
 <hr />
-<p>
-    <a class="btn btn-primary" asp-action="Create">Opret ny</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -56,6 +55,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
+                <a asp-action="Release" asp-route-id="@item.Id">Udskriv</a> |
                 <a asp-action="Edit" asp-route-id="@item.Id">Editér</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Slet</a>
@@ -64,3 +64,6 @@
 }
     </tbody>
 </table>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Opret ny</a>
+</p>

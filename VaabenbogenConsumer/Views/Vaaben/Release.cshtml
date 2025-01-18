@@ -1,0 +1,58 @@
+﻿@model VaabenbogenConsumer.Models.Vaaben
+
+@{
+    ViewData["Title"] = "Udskriv";
+}
+
+<h1>Udskriv Våben</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Navn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Navn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fabrikant)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fabrikant)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ladefunktion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ladefunktion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Loebenummer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Loebenummer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+    <div class="row">
+        <form class="d-flex me-3" asp-controller="Jaeger" asp-action="Search" method="post">
+            <input class="form-control me-2" type="search" placeholder="Søg" aria-label="Search" name="query">
+            <button class="btn btn-outline-light" type="submit">Søg</button>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

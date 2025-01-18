@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VaabenbogenConsumer.Helpers;
 using VaabenbogenConsumer.Models;
+using VaabenbogenConsumer.Models.ViewModels;
 
 namespace VaabenbogenConsumer.Controllers
 {
@@ -19,6 +20,7 @@ namespace VaabenbogenConsumer.Controllers
             ViewBag.StatusOptions = DropdownHelper.VaabenStatusDropdownOptions();
             ViewBag.LadefunktionOptions = DropdownHelper.LadefunktionDropdownOptions();
             ViewBag.TypeOptions = DropdownHelper.VaabenTypeDropdownOptions();
+            ViewBag.SoegVaabenObject = new SoegVaaben();
             return View();
         }
 

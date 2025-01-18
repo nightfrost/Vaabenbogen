@@ -24,13 +24,85 @@ namespace VaabenbogenConsumer.Controllers
         }
 
         // GET: Vaaben
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(SoegVaaben? search)
         {
-            return View(await _context.Vaaben.ToListAsync());
+            if (search == null) search = new SoegVaaben();
+            ViewBag.SoegVaabenObject = search;
+
+            ViewBag.StatusOptions = DropdownHelper.VaabenStatusDropdownOptions();
+            ViewBag.LadefunktionOptions = DropdownHelper.LadefunktionDropdownOptions();
+            ViewBag.TypeOptions = DropdownHelper.VaabenTypeDropdownOptions();
+
+
+            return View(await SearchWeapons(search));
+        }
+
+        private async Task<List<Vaaben>> SearchWeapons(SoegVaaben soegVaaben)
+        {
+            if (string.IsNullOrWhiteSpace(soegVaaben.Navn)
+                && string.IsNullOrWhiteSpace(soegVaaben.Fabrikant)
+                && soegVaaben.Status == null
+                && soegVaaben.Ladefunktion == null
+                && string.IsNullOrWhiteSpace(soegVaaben.Loebenummer)
+                && soegVaaben.Type == null)
+            {
+                return await _context.Vaaben.ToListAsync();
+            }
+            var query = _context.Vaaben.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Navn))
+            {
+                query = query.Where(v => v.Navn.Contains(soegVaaben.Navn));
+            }
+
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Fabrikant))
+            {
+                query = query.Where(v => v.Fabrikant == soegVaaben.Fabrikant);
+            }
+
+            if (soegVaaben.Status.HasValue)
+            {
+                query = query.Where(v => v.Status == soegVaaben.Status.Value);
+            }
+
+            if (soegVaaben.Ladefunktion.HasValue)
+            {
+                query = query.Where(v => v.Ladefunktion == soegVaaben.Ladefunktion.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Loebenummer))
+            {
+                query = query.Where(v => v.Loebenummer == soegVaaben.Loebenummer);
+            }
+
+            if (soegVaaben.Type.HasValue)
+            {
+                query = query.Where(v => v.Type == soegVaaben.Type.Value);
+            }
+
+            return await query.ToListAsync();
         }
 
         // GET: Vaaben/Details/5
         public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var vaaben = await _context.Vaaben
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (vaaben == null)
+            {
+                return NotFound();
+            }
+
+            return View(vaaben);
+        }
+
+        // GET: Vaaben/Details/5
+        public async Task<IActionResult> Release(int? id)
         {
             if (id == null)
             {
@@ -104,7 +176,7 @@ namespace VaabenbogenConsumer.Controllers
                 && string.IsNullOrWhiteSpace(soegVaaben.Loebenummer)
                 && soegVaaben.Type == null)
             {
-                return NotFound();
+                return View(viewName: "Index", soegVaaben);
             }
             var query = _context.Vaaben.AsQueryable();
 
