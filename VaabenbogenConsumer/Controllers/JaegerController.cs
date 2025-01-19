@@ -67,43 +67,6 @@ namespace VaabenbogenConsumer.Controllers
             return View(jaeger);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Release(SoegKunde soegKunde)
-        {
-            if (string.IsNullOrWhiteSpace(soegKunde.Query))
-            {
-                ViewBag.Error = true;
-                return View();
-            }
-            
-            if (soegKunde.IsFirma.HasValue && soegKunde.IsFirma.Value)
-            {
-                //Firma søgning
-                var query = _context.Virksomheder.AsQueryable();
-
-                List<Virksomhed> virksomhedResult = await query.Where(item => item.Navn.Contains(soegKunde.Query))
-                    .Where(item => item.Cvr.Contains(soegKunde.Query))
-                    .Where(item => item.Email.Contains(soegKunde.Query))
-                    .Where(item => item.JaegerId.Contains(soegKunde.Query))
-                    .ToListAsync();
-
-                return View(viewName: ""); //TODO: Typeahead????
-            } else
-            {
-                //PrivatPerson søgning
-                var query = _context.Jaegere.AsQueryable();
-
-                List<Jaeger> jaegereResult = await query.Where(item => item.Fornavn.Contains(soegKunde.Query))
-                    .Where(item => item.Email.Contains(soegKunde.Query))
-                    .Where(item => item.Cpr.Contains(soegKunde.Query))
-                    .Where(item => item.Efternavn.Contains(soegKunde.Query))
-                    .ToListAsync();
-
-                return View(viewName: ""); //TODO: Typeahead????
-            }
-        }
-
         // GET: Jaeger/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

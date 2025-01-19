@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using VaabenbogenConsumer.Data;
 using VaabenbogenConsumer.Helpers;
 using VaabenbogenConsumer.Models;
@@ -101,7 +102,7 @@ namespace VaabenbogenConsumer.Controllers
             return View(vaaben);
         }
 
-        // GET: Vaaben/Details/5
+        // GET: Vaaben/Release/5
         public async Task<IActionResult> Release(int? id)
         {
             if (id == null)
@@ -111,12 +112,44 @@ namespace VaabenbogenConsumer.Controllers
 
             var vaaben = await _context.Vaaben
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (vaaben == null)
+
+            var releasedToOptions = await _context.Virksomheder
+                .Select(virks => new SelectListItem
+                {
+                    Text = virks.Navn,
+                    Value = virks.Cvr
+                }).ToListAsync();
+
+            releasedToOptions.AddRange(await _context.Jaegere
+                .Select(jaegers => new SelectListItem
+                { 
+                    Text = jaegers.Fornavn, 
+                    Value = jaegers.Cpr
+                }).ToListAsync());
+
+            ViewBag.ReleasedToOptions = releasedToOptions;
+
+            if (releasedToOptions.IsNullOrEmpty())
             {
-                return NotFound();
+                ViewBag.ReleasedToOptions = null;
             }
 
             return View(vaaben);
+        }
+
+        // POST: Vaaben/Release/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Release(Vaaben weaponToRelease, string releasedTo)
+        {
+            if (weaponToRelease == null || weaponToRelease.Id == 0) return View(viewName: "Index");
+            if (string.IsNullOrWhiteSpace(releasedTo)) return View(viewName: "Release", weaponToRelease);
+
+            //TODO: Implement release action.
+            //1. Set Vaaben Model to released, and to whom.
+            //2. Register in sales.
+            //3. Return Success or failure.
+            return View(viewName: "Index");
         }
 
         // GET: Vaaben/Create

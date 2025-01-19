@@ -45,14 +45,19 @@
             @Html.DisplayFor(model => model.Status)
         </dd>
     </dl>
+    <hr />
     <div class="row">
-        <form class="d-flex me-3" asp-controller="Jaeger" asp-action="Search" method="post">
-            <input class="form-control me-2" type="search" placeholder="Søg" aria-label="Search" name="query">
-            <button class="btn btn-outline-light" type="submit">Søg</button>
-        </form>
+        <div class="col-sm-5">
+            <label class="">Udskrives til:</label>
+            <select class="form-select" asp-items="@(ViewBag.ReleasedToOptions)"></select>
+            <br />
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Eller opret ny?
+            </label>
+            
+            <br />
+            <a asp-action="Release" class="btn btn-primary" role="button">Udskriv</a>
+        </div>
     </div>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>
