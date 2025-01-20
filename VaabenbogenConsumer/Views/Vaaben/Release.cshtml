@@ -48,16 +48,48 @@
     <hr />
     <div class="row">
         <div class="col-sm-5">
-            <label class="">Udskrives til:</label>
-            <select class="form-select" asp-items="@(ViewBag.ReleasedToOptions)"></select>
-            <br />
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Eller opret ny?
-            </label>
-            
-            <br />
-            <a asp-action="Release" class="btn btn-primary" role="button">Udskriv</a>
+            <form asp-action="Release" method="post">
+                @Html.HiddenFor(model => model.Id)
+                <label class="">Udskrives til:</label>
+                <select id="releaseToDropdown" name="releasedTo" class="form-select" asp-items="@(ViewBag.ReleasedToOptions)"></select>
+                <br />
+                <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault" name="createNew">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Eller opret ny?
+                </label>
+                <br />
+                <div id="conditionalForm" style="display: none;">
+                    <label for="newName">Navn:</label>
+                    <input type="text" id="newName" name="newName" class="form-control" placeholder="Jens Erik Jensen">
+                    <label for="newPhone">Telefon:</label>
+                    <input type="text" id="newPhone" name="newPhone" class="form-control" placeholder="99887766">
+                    <label for="newEmail">Email:</label>
+                    <input type="text" id="newEmail" name="newEmail" class="form-control" placeholder="email@email.dk">
+                    <label for="newJaegerId">JaegerId:</label>
+                    <input type="text" id="newJaegerId" name="newJaegerId" class="form-control" placeholder="123456">
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Udskriv</button>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkbox = document.getElementById("flexCheckDefault");
+        const conditionalForm = document.getElementById("conditionalForm");
+        const releaseToDropdown = document.getElementById("releaseToDropdown");
+
+        checkbox.addEventListener("change", function () {
+            if (this.checked) {
+                conditionalForm.style.display = "block";
+                releaseToDropdown.value = null;
+                releaseToDropdown.disabled = true;
+            } else {
+                conditionalForm.style.display = "none";
+                releaseToDropdown.disabled = false;
+            }
+        });
+    });
+</script>

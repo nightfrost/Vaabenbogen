@@ -18,10 +18,12 @@ namespace VaabenbogenConsumer.Controllers
     public class VaabenController : Controller
     {
         private readonly VaabenBogenContext _context;
+        private readonly ILogger<VaabenController> _logger;
 
-        public VaabenController(VaabenBogenContext context)
+        public VaabenController(VaabenBogenContext context, ILogger<VaabenController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: Vaaben
@@ -140,16 +142,78 @@ namespace VaabenbogenConsumer.Controllers
         // POST: Vaaben/Release/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Release(Vaaben weaponToRelease, string releasedTo)
+        public async Task<IActionResult> Release(Vaaben weaponToRelease, string? releasedTo, string? newName, string? newPhone, string? newEmail, string? newJaegerId)
         {
             if (weaponToRelease == null || weaponToRelease.Id == 0) return View(viewName: "Index");
-            if (string.IsNullOrWhiteSpace(releasedTo)) return View(viewName: "Release", weaponToRelease);
+            if (string.IsNullOrWhiteSpace(releasedTo) && string.IsNullOrWhiteSpace(newJaegerId))
+            {
+                //Error view bag?
+                return View(viewName: "Release", weaponToRelease);
+            }
 
-            //TODO: Implement release action.
-            //1. Set Vaaben Model to released, and to whom.
-            //2. Register in sales.
-            //3. Return Success or failure.
-            return View(viewName: "Index");
+            //New Customer case.
+            bool udskrivelseSuccess = false;
+            if (string.IsNullOrWhiteSpace(releasedTo) && !string.IsNullOrWhiteSpace(newJaegerId))
+            {
+                Jaeger newJaeger = new()
+                {
+                    Fornavn = newName ?? "",
+                    Email = newEmail ?? "",
+                    JaegerId = newJaegerId,
+                    Telefon = newPhone ?? "0",
+                };
+
+                _context.Jaegere.Add(newJaeger);
+                var result = await _context.SaveChangesAsync();
+                if (result <= 0)
+                {
+                    DbUpdateException exception = new DbUpdateException(message: $"Failed to add new Jaeger with JaegerId: {newJaegerId}");
+                    _logger.LogCritical($"Failed to add new Jaeger with JaegerId: {newJaegerId}", exception);
+                    throw exception;
+                }
+
+                var dbJaeger = await _context.Jaegere.Where(jaeger => jaeger.JaegerId == newJaegerId).FirstOrDefaultAsync();
+
+                Udskrivelser udskrivelser = new()
+                {
+                    CreatedBy = HttpContext.User.Identity?.Name ?? "System",
+                    UdskrevetTilJaeger = dbJaeger
+                };
+
+                _context.Udskrivelser.Add(udskrivelser);
+                result = await _context.SaveChangesAsync();
+                if (result != 1)
+                {
+                    DbUpdateException exception = new(message: $"Failed to save Udskrivelse at {udskrivelser.Created}");
+                    _logger.LogCritical($"Failed to save Udskrivelse at {udskrivelser.Created}", exception);
+                    throw exception;
+                }
+                udskrivelseSuccess = true;
+            } else
+            {//Existing Customer case.
+                Udskrivelser udskrivelser = new() { CreatedBy = HttpContext.User.Identity?.Name ?? "System" };
+                var jaegerResult = await _context.Jaegere.FirstOrDefaultAsync(jaeger => jaeger.Cpr == releasedTo);
+
+                //Jaeger case
+                if (jaegerResult != null)
+                {
+                    udskrivelser.UdskrevetTilJaeger = jaegerResult;
+                } else
+                {//Company case
+                    var virksomhedResult = await _context.Virksomheder.FirstOrDefaultAsync(virk => virk.Cvr == releasedTo);
+                    udskrivelser.UdskrevetTilVirksomhed = virksomhedResult;
+                }
+                _context.Udskrivelser.Add(udskrivelser);
+                var result = await _context.SaveChangesAsync();
+                if (result != 1)
+                {
+                    DbUpdateException exception = new(message: $"Failed to save Udskrivelse at {udskrivelser.Created}");
+                    _logger.LogCritical($"Failed to save Udskrivelse at {udskrivelser.Created}", exception);
+                    throw exception;
+                }
+                udskrivelseSuccess = true;
+            }
+            return View(viewName: "Index"); //Success view bag?
         }
 
         // GET: Vaaben/Create

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VaabenbogenConsumer.Data;
@@ -11,9 +12,11 @@ using VaabenbogenConsumer.Data;
 namespace VaabenbogenConsumer.Migrations
 {
     [DbContext(typeof(VaabenBogenContext))]
-    partial class VaabenBogenContextModelSnapshot : ModelSnapshot
+    [Migration("20250120183032_Udskrivelser_Table_Add")]
+    partial class Udskrivelser_Table_Add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -319,9 +322,6 @@ namespace VaabenbogenConsumer.Migrations
                     b.Property<string>("Fabrikant")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool?>("IsUdskrevet")
-                        .HasColumnType("boolean");
 
                     b.Property<int>("Ladefunktion")
                         .HasColumnType("integer");

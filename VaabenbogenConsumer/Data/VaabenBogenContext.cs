@@ -14,6 +14,7 @@ namespace VaabenbogenConsumer.Data
         public DbSet<Jaeger> Jaegere { get; set; }
         public DbSet<Vaaben> Vaaben { get; set; }
         public DbSet<Virksomhed> Virksomheder { get; set; }
+        public DbSet<Udskrivelser> Udskrivelser { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +31,9 @@ namespace VaabenbogenConsumer.Data
 
             modelBuilder.Entity<Vaaben>()
                 .ToTable("Vaaben");
+
+            modelBuilder.Entity<Udskrivelser>()
+                .ToTable("Udskrivelser");
         }
     }
 }

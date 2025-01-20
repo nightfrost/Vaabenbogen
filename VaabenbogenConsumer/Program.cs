@@ -50,6 +50,8 @@ namespace VaabenbogenConsumer
                 options.SlidingExpiration = true;
             });
 
+            builder.Services.AddLogging();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

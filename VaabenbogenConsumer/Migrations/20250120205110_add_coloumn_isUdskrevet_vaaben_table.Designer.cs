@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VaabenbogenConsumer.Data;
@@ -11,9 +12,11 @@ using VaabenbogenConsumer.Data;
 namespace VaabenbogenConsumer.Migrations
 {
     [DbContext(typeof(VaabenBogenContext))]
-    partial class VaabenBogenContextModelSnapshot : ModelSnapshot
+    [Migration("20250120205110_add_coloumn_isUdskrevet_vaaben_table")]
+    partial class add_coloumn_isUdskrevet_vaaben_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

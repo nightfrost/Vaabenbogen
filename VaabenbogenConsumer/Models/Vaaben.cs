@@ -17,6 +17,7 @@ namespace VaabenbogenConsumer.Models
         [Display(Name = "Våben status")]
         public VaabenStatus Status { get; set; }
         public Ejer? Ejer { get; set; }
+        public bool? IsUdskrevet { get; set; }
 
         public Vaaben()
         {
