@@ -23,6 +23,8 @@ namespace VaabenbogenConsumer.Models
             Fornavn = fornavn ?? throw new ArgumentNullException(nameof(fornavn));
             Efternavn = efternavn ?? throw new ArgumentNullException(nameof(efternavn));
             Cpr = cpr ?? throw new ArgumentNullException(nameof(cpr));
+            Foedselsdato = DateOnly.Parse(cpr.Substring(0, 5));
+
         }
 
         public override bool Equals(object? obj)

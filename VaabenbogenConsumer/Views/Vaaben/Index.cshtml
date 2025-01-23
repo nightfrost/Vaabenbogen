@@ -9,6 +9,7 @@
 <br />
 <partial name="_SearchWeaponPartial" model="@(ViewBag.SoegVaabenObject)"/>
 <hr />
+<h4>Det er kun muligt at udskrive våben, som ikke allerede er udskrevet.</h4>
 <table class="table">
     <thead>
         <tr>
@@ -29,6 +30,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsUdskrevet)
             </th>
             <th></th>
         </tr>
@@ -55,10 +59,22 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                <a asp-action="Release" asp-route-id="@item.Id">Udskriv</a> |
-                <a asp-action="Edit" asp-route-id="@item.Id">Editér</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Slet</a>
+                @(item.IsUdskrevet.HasValue ? item.IsUdskrevet.Value : "False")
+            </td>
+            <td>
+                    @if(item.IsUdskrevet.HasValue && item.IsUdskrevet.Value == true)
+                    {
+                        <a asp-action="Release" asp-route-id="@item.Id" class="visually-hidden">Udskriv |</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editér |</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Detaljer |</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Slet</a>
+                    } else
+                    {
+                        <a asp-action="Release" asp-route-id="@item.Id">Udskriv |</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editér |</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Detaljer |</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Slet</a>
+                    }
             </td>
         </tr>
 }

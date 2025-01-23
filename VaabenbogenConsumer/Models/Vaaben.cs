@@ -17,10 +17,21 @@ namespace VaabenbogenConsumer.Models
         [Display(Name = "Våben status")]
         public VaabenStatus Status { get; set; }
         public Ejer? Ejer { get; set; }
+        [Display(Name = "Oprettet")]
+        public DateTime? Created { get; set; }
+        [Display(Name = "Oprettet af")]
+        public string? CreatedBy { get; set; }
+        [Display(Name ="Opdateret")]
+        public DateTime? Updated { get; set; }
+        [Display(Name = "Opdateret af")]
+        public string? UpdatedBy { get; set; }
+        [Display(Name = "Udskrevet")]
         public bool? IsUdskrevet { get; set; }
 
         public Vaaben()
         {
+            Created = DateTime.UtcNow;
+            IsUdskrevet = false;
         }
 
         public Vaaben(int id, string navn, string fabrikant, Ladefunktion ladefunktion, string loebenummer, VaabenType type, VaabenStatus status, Ejer? ejer)
@@ -33,6 +44,8 @@ namespace VaabenbogenConsumer.Models
             Type = type;
             Status = status;
             Ejer = ejer;
+            Created = DateTime.UtcNow;
+            IsUdskrevet = false;
         }
     }
 
