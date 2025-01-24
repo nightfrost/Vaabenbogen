@@ -27,6 +27,7 @@ namespace VaabenbogenConsumer.Models
         public string? UpdatedBy { get; set; }
         [Display(Name = "Udskrevet")]
         public bool? IsUdskrevet { get; set; }
+        public DateTime? Udskrevet { get; set; }
 
         public Vaaben()
         {

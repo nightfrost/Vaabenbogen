@@ -9,6 +9,7 @@ namespace VaabenbogenConsumer.Models.ViewModels
 
         public SoegKunde()
         {
+            this.Query = string.Empty;
         }
 
         public SoegKunde(bool? isFirma, string query)

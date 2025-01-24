@@ -27,7 +27,7 @@ namespace VaabenbogenConsumer.Controllers
         }
 
         // GET: Vaaben
-        public async Task<IActionResult> Index(SoegVaaben? search = null)
+        public async Task<IActionResult> Index(SoegVaaben? search)
         {
             if (search == null) search = new SoegVaaben();
             ViewBag.SoegVaabenObject = search;
@@ -38,6 +38,11 @@ namespace VaabenbogenConsumer.Controllers
 
 
             return View(viewName:"Index", await SearchWeapons(search));
+        }
+
+        public async Task<IActionResult> ResetSearch()
+        {
+            return await Index(null);
         }
 
         private async Task<List<Vaaben>> SearchWeapons(SoegVaaben soegVaaben)
@@ -144,7 +149,7 @@ namespace VaabenbogenConsumer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Release(Vaaben vaaben, ReleaseVaabenViewModel? model, string? releasedTo)
         {
-            if ((model == null && string.IsNullOrWhiteSpace(releasedTo)) || vaaben == null || vaaben.Id == 0) return await Index();
+            if ((model == null && string.IsNullOrWhiteSpace(releasedTo)) || vaaben == null || vaaben.Id == 0) return await Index(null);
 
             //New Customer case.
             bool udskrivelseSuccess = false;
@@ -213,15 +218,15 @@ namespace VaabenbogenConsumer.Controllers
                             throw exception;
                         }
                     }
-                    catch (DbUpdateException ex)
+                    catch (DbUpdateException)
                     {
                         //TODO: Handle
-                        throw ex;
+                        throw;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         //TODO: Handle
-                        throw ex;
+                        throw;
                     }
 
                     var dbJaeger = await _context.Jaegere.Where(jaeger => jaeger.JaegerId == model.newJaegerId).FirstOrDefaultAsync();
@@ -243,10 +248,10 @@ namespace VaabenbogenConsumer.Controllers
                             throw exception;
                         }
                     }
-                    catch (DbUpdateException ex)
+                    catch (DbUpdateException)
                     {
                         //TODO: Handle
-                        throw ex;
+                        throw;
                     }
                     catch (Exception)
                     {
@@ -283,10 +288,10 @@ namespace VaabenbogenConsumer.Controllers
                         throw exception;
                     }
                 }
-                catch (DbUpdateException ex)
+                catch (DbUpdateException)
                 {
                     //TODO: Handle
-                    throw ex;
+                    throw;
                 }
                 catch (Exception)
                 {
@@ -305,7 +310,7 @@ namespace VaabenbogenConsumer.Controllers
                         setters.SetProperty(v => v.IsUdskrevet, true));
             }
 
-            return await Index();
+            return await Index(null);
         }
 
         // GET: Vaaben/Create
