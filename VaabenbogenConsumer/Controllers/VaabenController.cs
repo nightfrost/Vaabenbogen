@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ using VaabenbogenConsumer.Models.ViewModels;
 
 namespace VaabenbogenConsumer.Controllers
 {
+    [Authorize]
     public class VaabenController : Controller
     {
         private readonly VaabenBogenContext _context;

@@ -22,9 +22,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index" aria-current="page">Hjem</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Vaaben" asp-action="Index">Våben</a>
-                        </li> *@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Vaaben" asp-action="Create">Tilføj Våben</a>
                         </li>
@@ -39,7 +36,7 @@
                         </li>
                     </ul>
                     <form class="d-flex me-3" asp-controller="Vaaben" asp-action="Search" method="get">
-                        <input class="form-control me-2" type="search" placeholder="Søg" aria-label="Search" name="query">
+                        <input class="form-control me-2" type="search" placeholder="Fritekst søgning..." aria-label="Search" name="query">
                         <button class="btn btn-outline-light" type="submit">Søg</button>
                     </form>
                     <partial name="_LoginPartial" />
