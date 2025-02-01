@@ -66,22 +66,10 @@ jobs:
           sshpass -p "$SSH_PASSWORD" scp -v -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/var/www/vaabenbogen/VaabenbogenConsumer_1_0/
           echo "File transfer completed"
           
-          echo "Executing service commands..."
-          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
-          set -x
-          if sudo -S systemctl restart $SERVICE_NAME; then
-              echo "Service restart successful"
-          else
-              echo "Service restart failed"
-              exit 1
-          fi
-  
-          if sudo -S systemctl status $SERVICE_NAME --no-pager; then
-              echo "Service status check successful"
-          else
-              echo "Service status check failed"
-              exit 1
-          fi
+          echo "Restarting service..."
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << EOF
+          sudo systemctl restart $SERVICE_NAME
+          sudo systemctl status $SERVICE_NAME --no-pager
           EOF
   
 
