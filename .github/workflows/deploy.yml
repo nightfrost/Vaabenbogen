@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Code
@@ -35,7 +35,7 @@ jobs:
           path: publish/
           
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     steps:
       - name: Download Artifact
@@ -68,8 +68,8 @@ jobs:
           
           echo "Restarting service..."
           sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << EOF
-          sudo systemctl restart $SERVICE_NAME
-          sudo systemctl status $SERVICE_NAME --no-pager
+          sudo -S systemctl restart $SERVICE_NAME
+          sudo -S systemctl status $SERVICE_NAME --no-pager
           EOF
   
 
