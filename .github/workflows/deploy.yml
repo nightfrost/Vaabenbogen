@@ -45,19 +45,26 @@ jobs:
           name: published-app
           path: publish/
 
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
       - name: Deploy to Server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }} 
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
           SERVICE_NAME: "vaabenbogen.service"
         run: |
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > private_key && chmod 600 private_key
-          ssh -i private_key -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo SSH connection successful!"
-          scp -i private_key -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/home/ubuntu/VaabenbogenConsumer_1_0/
-          ssh -i private_key -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << EOF
+          eval `ssh-agent -s`
+          echo "$SSH_PASSWORD" | ssh-add private_key
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo SSH connection successful!"
+          sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/var/www/vaabenbogen/VaabenbogenConsumer_1_0/
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << EOF
             sudo systemctl restart $SERVICE_NAME
             sudo systemctl status $SERVICE_NAME --no-pager
           EOF
+  
 
 
