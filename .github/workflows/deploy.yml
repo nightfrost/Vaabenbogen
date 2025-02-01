@@ -60,7 +60,7 @@ jobs:
           eval `ssh-agent -s`
           echo "$SSH_PASSWORD" | ssh-add private_key
           sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo SSH connection successful!"
-          sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/var/www/vaabenbogen/VaabenbogenConsumer_1_0/
+          sshpass -p "$SSH_PASSWORD" sudo scp -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/var/www/vaabenbogen/VaabenbogenConsumer_1_0/
           sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << EOF
             sudo systemctl restart $SERVICE_NAME
             sudo systemctl status $SERVICE_NAME --no-pager
