@@ -53,8 +53,10 @@ jobs:
           SERVICE_NAME: "vaabenbogen.service"
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp -i private_key -r publish/* $SERVER_USER@$SERVER_IP:/home/ubuntu/VaabenbogenConsumer_1_0/
-          ssh -i private_key $SERVER_USER@$SERVER_IP << EOF
+          echo "Connecting to $SERVER_USER@$SERVER_IP..."
+          scp -i private_key -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/var/www/myapp/
+          ssh -i private_key -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << EOF
             sudo systemctl restart $SERVICE_NAME
             sudo systemctl status $SERVICE_NAME --no-pager
           EOF
+
