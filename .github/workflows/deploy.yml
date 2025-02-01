@@ -69,14 +69,14 @@ jobs:
           echo "Executing service commands..."
           sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
           set -x
-          if sudo -s systemctl restart $SERVICE_NAME; then
+          if sudo -S systemctl restart $SERVICE_NAME; then
               echo "Service restart successful"
           else
               echo "Service restart failed"
               exit 1
           fi
   
-          if sudo -s systemctl status $SERVICE_NAME --no-pager; then
+          if sudo -S systemctl status $SERVICE_NAME --no-pager; then
               echo "Service status check successful"
           else
               echo "Service status check failed"
