@@ -316,11 +316,12 @@ namespace VaabenbogenConsumer.Controllers
         }
 
         // GET: Vaaben/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             ViewBag.StatusOptions = DropdownHelper.VaabenStatusDropdownOptions();
             ViewBag.LadefunktionOptions = DropdownHelper.LadefunktionDropdownOptions();
             ViewBag.TypeOptions = DropdownHelper.VaabenTypeDropdownOptions();
+            ViewBag.IndskriverOptions = await DropdownHelper.IndskriverDropdownOptions(_context);
             return View();
         }
 
@@ -329,7 +330,7 @@ namespace VaabenbogenConsumer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Navn,Fabrikant,Ladefunktion,Loebenummer,Type,Status")] Vaaben vaaben)
+        public async Task<IActionResult> Create([Bind("Id,Navn,Fabrikant,Ladefunktion,Loebenummer,Type,Status,Indskriver")] Vaaben vaaben)
         {
             if (ModelState.IsValid)
             {

@@ -11,6 +11,8 @@ namespace VaabenbogenConsumer.Data
         {
         }
 
+        public VaabenBogenContext() { }
+
         public DbSet<Jaeger> Jaegere { get; set; }
         public DbSet<Vaaben> Vaaben { get; set; }
         public DbSet<Virksomhed> Virksomheder { get; set; }

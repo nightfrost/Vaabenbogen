@@ -16,7 +16,6 @@ namespace VaabenbogenConsumer.Models
         public VaabenType Type { get; set; }
         [Display(Name = "Våben status")]
         public VaabenStatus Status { get; set; }
-        public Ejer? Ejer { get; set; }
         [Display(Name = "Oprettet")]
         public DateTime? Created { get; set; }
         [Display(Name = "Oprettet af")]
@@ -28,15 +27,21 @@ namespace VaabenbogenConsumer.Models
         [Display(Name = "Udskrevet")]
         public bool? IsUdskrevet { get; set; }
         public DateTime? Udskrevet { get; set; }
-        public string Indskriver { get; set; }
+        public Ejer Indskriver { get; set; }
+        [Display(Name = "Udskrevet til")]
+        public Ejer? UdskrevetTil {  get; set; }
 
         public Vaaben()
         {
             Created = DateTime.UtcNow;
             IsUdskrevet = false;
+            Navn = "";
+            Fabrikant = "";
+            Loebenummer = "00001";
+            Indskriver = new Ejer();
         }
 
-        public Vaaben(int id, string navn, string fabrikant, Ladefunktion ladefunktion, string loebenummer, VaabenType type, VaabenStatus status, Ejer? ejer)
+        public Vaaben(int id, string navn, string fabrikant, Ladefunktion ladefunktion, string loebenummer, VaabenType type, VaabenStatus status, Ejer indskriver)
         {
             Id = id;
             Navn = navn ?? throw new ArgumentNullException(nameof(navn));
@@ -45,9 +50,9 @@ namespace VaabenbogenConsumer.Models
             Loebenummer = loebenummer ?? throw new ArgumentNullException(nameof(loebenummer));
             Type = type;
             Status = status;
-            Ejer = ejer;
             Created = DateTime.UtcNow;
             IsUdskrevet = false;
+            Indskriver = indskriver;
         }
     }
 
