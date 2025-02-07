@@ -330,7 +330,7 @@ namespace VaabenbogenConsumer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Navn,Fabrikant,Ladefunktion,Loebenummer,Type,Status,Indskriver")] Vaaben vaaben)
+        public async Task<IActionResult> Create(Vaaben vaaben, AddCustomerViewModel? newCustomer, string? releasedTo)
         {
             if (ModelState.IsValid)
             {

@@ -1,0 +1,64 @@
+﻿
+<hr />
+<div id="conditionalCompanyForm" style="display: none;">
+    <label for="newCvr" class="form-label">CVR:</label>
+    <input type="text" id="newCvr" name="newCvr" class="form-control" placeholder="63890812">
+    <label for="newCompanyName" class="form-label">Navn:</label>
+    <input type="text" id="newCompanyName" name="newCompanyName" class="form-control" placeholder="Jægeren og Lystfiskeren">
+    <label for="newCompanyPhone" class="form-label">Telefon:</label>
+    <input type="text" id="newCompanyPhone" name="newCompanyPhone" class="form-control" placeholder="99887766">
+    <label for="newCompanyEmail" class="form-label">Email:</label>
+    <input type="text" id="newCompanyEmail" name="newCompanyEmail" class="form-control" placeholder="email@email.dk">
+    <label for="newCompanyJaegerId" class="form-label">JaegerId:</label>
+    <input type="text" id="newCompanyJaegerId" name="newCompanyJaegerId" class="form-control" placeholder="123456">
+</div>
+<div id="conditionalForm" style="display: none;">
+    <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefaultCompany" name="isCompany">
+    <label class="form-check-label" for="flexCheckDefaultCompany">
+        Virksomhed?
+    </label> <br />
+    <label for="newCpr" class="form-label">CPR:</label>
+    <input type="text" id="newCpr" name="newCpr" class="form-control" placeholder="050293-1234">
+    <label for="newFirstName" class="form-label">Navn:</label>
+    <input type="text" id="newFirstName" name="newFirstName" class="form-control" placeholder="Jens Erik">
+    <label for="newLastName" class="form-label">Efternavn:</label>
+    <input type="text" id="newLastName" name="newLastName" class="form-control" placeholder="Jensen">
+    <label for="newPhone" class="form-label">Telefon:</label>
+    <input type="text" id="newPhone" name="newPhone" class="form-control" placeholder="99887766">
+    <label for="newEmail" class="form-label">Email:</label>
+    <input type="text" id="newEmail" name="newEmail" class="form-control" placeholder="email@email.dk">
+    <label for="newJaegerId" class="form-label">JaegerId:</label>
+    <input type="text" id="newJaegerId" name="newJaegerId" class="form-control" placeholder="123456">
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkbox = document.getElementById("flexCheckDefault");
+        const checkboxCompany = document.getElementById("flexCheckDefaultCompany");
+        const conditionalForm = document.getElementById("conditionalForm");
+        const conditionalCompanyForm = document.getElementById("conditionalCompanyForm");
+        const fieldToDisable = document.getElementById("@(ViewData["Property1"])");
+
+        checkbox.addEventListener("change", function () {
+            if (this.checked) {
+                conditionalForm.style.display = "block";
+                fieldToDisable.value = null;
+                fieldToDisable.disabled = true;
+            } else {
+                conditionalForm.style.display = "none";
+                fieldToDisable.disabled = false;
+                conditionalCompanyForm.style.display = "none";
+            }
+        });
+        checkboxCompany.addEventListener("change", function () {
+            if (this.checked) {
+                conditionalCompanyForm.style.display = "block";
+                conditionalForm.style.display = "none";
+
+            } else {
+                conditionalCompanyForm.style.display = "none";
+                conditionalForm.style.display = "block";
+            }
+        })
+    });
+</script>
