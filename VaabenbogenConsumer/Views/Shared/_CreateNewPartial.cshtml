@@ -37,7 +37,7 @@
         const checkboxCompany = document.getElementById("flexCheckDefaultCompany");
         const conditionalForm = document.getElementById("conditionalForm");
         const conditionalCompanyForm = document.getElementById("conditionalCompanyForm");
-        const fieldToDisable = document.getElementById("@(ViewData["Property1"])");
+        const fieldToDisable = document.querySelector("[data-disable-target='true']");
 
         checkbox.addEventListener("change", function () {
             if (this.checked) {

@@ -1,5 +1,6 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace VaabenbogenConsumer.Models
@@ -27,6 +28,7 @@ namespace VaabenbogenConsumer.Models
         [Display(Name = "Udskrevet")]
         public bool? IsUdskrevet { get; set; }
         public DateTime? Udskrevet { get; set; }
+        [ValidateNever]
         public Ejer Indskriver { get; set; }
         [Display(Name = "Udskrevet til")]
         public Ejer? UdskrevetTil {  get; set; }
