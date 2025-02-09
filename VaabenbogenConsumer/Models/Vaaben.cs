@@ -9,8 +9,11 @@ namespace VaabenbogenConsumer.Models
     {
         public int Id { get; set; }
         public string Navn { get; set; } 
-        public string Fabrikant { get; set; } 
-        public Ladefunktion Ladefunktion { get; set; }
+        public string Fabrikant { get; set; }
+        [Display(Name = "Ladefunktion")]
+        public Ladefunktion? Ladefunktion { get; set; }
+        [Display(Name = "Ladefunktion fritekst")]
+        public string? LadefunktionFritekst { get; set; }
         [Display(Name = "Løbenummer")]
         public string Loebenummer { get; set; }
         [Display(Name = "Våben type")]
@@ -77,8 +80,8 @@ namespace VaabenbogenConsumer.Models
 
     public enum Ladefunktion
     {
-        Manuel = 0,
-        Automatisk = 2,
-        Halvautomatisk = 3,
+        Enkeltlader = 0,
+        Repeter = 1,
+        Halvautomatisk = 2
     }
 }
