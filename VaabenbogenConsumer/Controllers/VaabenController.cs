@@ -51,7 +51,7 @@ namespace VaabenbogenConsumer.Controllers
                 && string.IsNullOrWhiteSpace(soegVaaben.Loebenummer)
                 && soegVaaben.Type == null)
             {
-                return await _context.Vaaben.ToListAsync();
+                return await _context.Vaaben.Where(v => v.IsUdskrevet == soegVaaben.IsUdskrevet).ToListAsync();
             }
             var query = _context.Vaaben.AsQueryable();
 
@@ -84,6 +84,8 @@ namespace VaabenbogenConsumer.Controllers
             {
                 query = query.Where(v => v.Type == soegVaaben.Type.Value);
             }
+
+            query = query.Where(v => v.IsUdskrevet == soegVaaben.IsUdskrevet);
 
             return await query.ToListAsync();
         }
