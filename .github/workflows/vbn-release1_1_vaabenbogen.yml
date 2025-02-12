@@ -56,6 +56,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
+        
+      - name: Edit a .NET Core database connection string in appsettings.json
+        uses: benday-inc/edit-dbconnstr-in-appsettings@v1.3
+        with:
+          name: VaabenBogenConnection
+          connectionString: '${{ secrets.CONNECTION_STRING_PROD }}'
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -72,10 +78,5 @@ jobs:
           slot-name: 'Production'
           package: .
 
-      - name: Edit a .NET Core database connection string in appsettings.json
-        uses: benday-inc/edit-dbconnstr-in-appsettings@v1.3
-        with:
-          name: VaabenBogenConnection
-          connectionString: '${{ secrets.CONNECTION_STRING_PROD }}'
-          pathToSettingsFile: 'C:\home\site\wwwroot\appsettings.json'
+      
           
