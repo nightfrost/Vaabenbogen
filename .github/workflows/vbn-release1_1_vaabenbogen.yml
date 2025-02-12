@@ -50,7 +50,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
+      - name: Update Json File values
+        uses: restackio/update-json-values-action@v1.0.0
+        with:
+          # file name/path to edit. e.g 'package.json'
+          file: appSettings.json
+          # values to replace. example: {'TEMPLATE_VALUE_HERE': 'value_to_replace_with', 'ANOTHER_TEMPLATE_VALUE': 'another_value_to_replace_with'}
+          values: '{"VaabenBogenConnection": "${{ secrets.CONNECTION_STRING_PROD }}"}'
+          
       - name: Login to Azure
         uses: azure/login@v2
         with:
