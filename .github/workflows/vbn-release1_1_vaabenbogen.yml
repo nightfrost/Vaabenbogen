@@ -71,4 +71,11 @@ jobs:
           app-name: 'vaabenbogen'
           slot-name: 'Production'
           package: .
+
+      - name: Edit a .NET Core database connection string in appsettings.json
+        uses: benday-inc/edit-dbconnstr-in-appsettings@v1.3
+        with:
+          name: VaabenBogenConnection
+          connectionString: '${{ secrets.CONNECTION_STRING_PROD }}'
+          pathToSettingsFile: 'C:\home\site\wwwroot\appsettings.json'
           
