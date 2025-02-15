@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +7,7 @@ using VaabenbogenConsumer.Data;
 using VaabenbogenConsumer.Helpers;
 using VaabenbogenConsumer.Models;
 using VaabenbogenConsumer.Models.ViewModels;
+using VaabenbogenConsumer.Exceptions;
 
 namespace VaabenbogenConsumer.Controllers
 {
@@ -56,7 +51,7 @@ namespace VaabenbogenConsumer.Controllers
                 && string.IsNullOrWhiteSpace(soegVaaben.Loebenummer)
                 && soegVaaben.Type == null)
             {
-                return await _context.Vaaben.ToListAsync();
+                return await _context.Vaaben.Where(v => v.IsUdskrevet == soegVaaben.IsUdskrevet).ToListAsync();
             }
             var query = _context.Vaaben.AsQueryable();
 
@@ -89,6 +84,8 @@ namespace VaabenbogenConsumer.Controllers
             {
                 query = query.Where(v => v.Type == soegVaaben.Type.Value);
             }
+
+            query = query.Where(v => v.IsUdskrevet == soegVaaben.IsUdskrevet);
 
             return await query.ToListAsync();
         }
@@ -316,28 +313,54 @@ namespace VaabenbogenConsumer.Controllers
         }
 
         // GET: Vaaben/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             ViewBag.StatusOptions = DropdownHelper.VaabenStatusDropdownOptions();
             ViewBag.LadefunktionOptions = DropdownHelper.LadefunktionDropdownOptions();
             ViewBag.TypeOptions = DropdownHelper.VaabenTypeDropdownOptions();
+            ViewBag.IndskriverOptions = await DropdownHelper.IndskriverDropdownOptions(_context);
             return View();
         }
 
         // POST: Vaaben/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Navn,Fabrikant,Ladefunktion,Loebenummer,Type,Status")] Vaaben vaaben)
+        public async Task<IActionResult> Create(Vaaben vaaben, AddCustomerViewModel? newCustomer, string? indskrevetAf)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return View(vaaben);
+            try
             {
-                _context.Add(vaaben);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (await VaabenExistsByLoebenummer(vaaben.Loebenummer)) throw new RecordAlreadyExistsException($"Loebenummer ({vaaben.Loebenummer}) eksistere i forvejen.");
+
+                if (!string.IsNullOrWhiteSpace(indskrevetAf))
+                {
+                    var existingerCustomer = await FindExistingCustomerInDB(indskrevetAf);
+                    vaaben.Indskriver = existingerCustomer;
+                    _context.Vaaben.Add(vaaben);
+                    await _context.SaveChangesAsync();
+                }
+
+                if (string.IsNullOrWhiteSpace(indskrevetAf) && (newCustomer != null && newCustomer.IsCompany.HasValue && newCustomer.IsCompany.Value == true))
+                {
+                    vaaben.Indskriver = ((Virksomhed)await AddNewCustomerToDB(newCustomer));
+                    _context.Vaaben.Add(vaaben);
+                    await _context.SaveChangesAsync();
+                } else if (string.IsNullOrWhiteSpace(indskrevetAf) && (newCustomer != null && ((newCustomer.IsCompany.HasValue && newCustomer.IsCompany.Value == false) || !newCustomer.IsCompany.HasValue)))
+                {
+                    vaaben.Indskriver = ((Jaeger)await AddNewCustomerToDB(newCustomer));
+                    _context.Vaaben.Add(vaaben);
+                    await _context.SaveChangesAsync();
+                }
+
             }
-            return View(vaaben);
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(vaaben);
+            }
+            
+            return RedirectToAction("Index");
         }
 
         // GET: Vaaben/Edit/5
@@ -436,7 +459,7 @@ namespace VaabenbogenConsumer.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VaabenExists(vaaben.Id))
+                    if (await VaabenExistsById(vaaben.Id))
                     {
                         return NotFound();
                     }
@@ -483,9 +506,78 @@ namespace VaabenbogenConsumer.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VaabenExists(int id)
+        private async Task<bool> VaabenExistsById(int id)
         {
-            return _context.Vaaben.Any(e => e.Id == id);
+            return await _context.Vaaben.AnyAsync(e => e.Id == id);
+        }
+
+        private async Task<bool> VaabenExistsByLoebenummer(string loebenummer)
+        {
+            return await _context.Vaaben.AnyAsync(vaaben => vaaben.Loebenummer == loebenummer);
+        }
+
+        private async Task<object> AddNewCustomerToDB(AddCustomerViewModel addCustomerViewModel)
+        {
+            if (addCustomerViewModel != null && addCustomerViewModel.IsCompany.HasValue && addCustomerViewModel.IsCompany.Value == true)
+            {
+                var exists = await _context.Virksomheder
+                    .Where(virk => virk.Cvr == addCustomerViewModel.NewCvr
+                    || virk.JaegerId == addCustomerViewModel.NewCompanyJaegerId)
+                    .AnyAsync();
+
+                //Handle in controller
+                if (exists) throw new RecordAlreadyExistsException($"CVR ({addCustomerViewModel.NewCvr}) eller JaegerID ({addCustomerViewModel.NewCompanyJaegerId}) eksistere i forvejen.");
+
+                Virksomhed newVirksomhed = new()
+                {
+                    Cvr = addCustomerViewModel.NewCvr,
+                    Navn = addCustomerViewModel.NewCompanyName,
+                    Telefon = addCustomerViewModel.NewCompanyPhone,
+                    Mobil = addCustomerViewModel.NewCompanyPhone,
+                    Email = addCustomerViewModel.NewCompanyEmail,
+                    JaegerId = addCustomerViewModel.NewCompanyJaegerId
+                };
+
+                _context.Virksomheder.Add(newVirksomhed);
+                await _context.SaveChangesAsync();
+                newVirksomhed = await _context.Virksomheder.FirstAsync(virk => virk.Cvr == addCustomerViewModel.NewCvr);
+
+                return newVirksomhed;
+            }
+            else
+            {
+                var exists = await _context.Jaegere.Where(jaeger => jaeger.Cpr == addCustomerViewModel.NewCpr || jaeger.JaegerId == addCustomerViewModel.NewJaegerId).AnyAsync();
+
+                if (exists) throw new RecordAlreadyExistsException($"CPR ({addCustomerViewModel.NewCpr}) eller JaegerID ({addCustomerViewModel.NewJaegerId}) eksistere i forvejen.");
+
+                Jaeger newJaeger = new()
+                {
+                    Cpr = addCustomerViewModel.NewCpr,
+                    Fornavn = addCustomerViewModel.NewFirstName,
+                    Efternavn = addCustomerViewModel.NewLastName,
+                    Telefon = addCustomerViewModel.NewPhone,
+                    Mobil = addCustomerViewModel.NewPhone,
+                    Email = addCustomerViewModel.NewEmail,
+                    JaegerId = addCustomerViewModel.NewJaegerId
+                };
+
+                _context.Jaegere.Add(newJaeger);
+                await _context.SaveChangesAsync();
+                newJaeger = await _context.Jaegere.FirstAsync(jaeger => jaeger.Cpr == addCustomerViewModel.NewCpr);
+
+                return newJaeger;
+            }
+        }
+
+        private async Task<Ejer> FindExistingCustomerInDB(string query)
+        {
+            var jaeger = await _context.Jaegere.FirstOrDefaultAsync(jaeger => jaeger.Cpr == query);
+            if (jaeger != default) return jaeger;
+
+            var virksomhed = await _context.Virksomheder.FirstOrDefaultAsync(virk => virk.Cvr == query);
+            if (virksomhed != default) return virksomhed;
+
+            throw new RecordNotFoundException($"Fandt ingen kunde med given CPR eller CVR. ({query})");
         }
     }
 }

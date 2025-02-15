@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using VaabenbogenConsumer.Data;
 using VaabenbogenConsumer.Models;
 
 namespace VaabenbogenConsumer.Helpers
@@ -50,6 +52,25 @@ namespace VaabenbogenConsumer.Helpers
 
             listofItems.Add(new SelectListItem() { });
             return listofItems;
+        }
+
+        public static async Task<List<SelectListItem>> IndskriverDropdownOptions(VaabenBogenContext _context)
+        {
+            List<SelectListItem> listOfItems = await _context.Virksomheder
+                .Select(virks => new SelectListItem
+                {
+                    Text = virks.Navn,
+                    Value = virks.Cvr
+                }).ToListAsync();
+
+            listOfItems.AddRange(await _context.Jaegere
+                .Select(jaegers => new SelectListItem
+                {
+                    Text = jaegers.Fornavn,
+                    Value = jaegers.Cpr
+                }).ToListAsync());
+
+            return listOfItems;
         }
 
         private static string GetEnumDisplayName(Enum value)

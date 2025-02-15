@@ -14,12 +14,15 @@ namespace VaabenbogenConsumer.Models.ViewModels
         [Display(Name = "Våben type")]
         public VaabenType? Type { get; set; }
         public VaabenStatus? Status { get; set; }
+        [Display(Name = "Vis udskrevet?")]
+        public bool IsUdskrevet { get; set; }
 
         public SoegVaaben()
         {
+            this.IsUdskrevet = false;
         }
 
-        public SoegVaaben(string? navn, string? fabrikant, Ladefunktion? ladefunktion, string? loebenummer, VaabenType? type, VaabenStatus? status)
+        public SoegVaaben(string? navn, string? fabrikant, Ladefunktion? ladefunktion, string? loebenummer, VaabenType? type, VaabenStatus? status, bool? isUdskrevet)
         {
             Navn = navn;
             Fabrikant = fabrikant;
@@ -27,6 +30,7 @@ namespace VaabenbogenConsumer.Models.ViewModels
             Loebenummer = loebenummer;
             Type = type;
             Status = status;
+            IsUdskrevet = isUdskrevet ?? false;
         }
     }
 }

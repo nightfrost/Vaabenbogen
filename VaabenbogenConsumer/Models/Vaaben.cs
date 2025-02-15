@@ -1,5 +1,6 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace VaabenbogenConsumer.Models
@@ -8,15 +9,17 @@ namespace VaabenbogenConsumer.Models
     {
         public int Id { get; set; }
         public string Navn { get; set; } 
-        public string Fabrikant { get; set; } 
-        public Ladefunktion Ladefunktion { get; set; }
+        public string Fabrikant { get; set; }
+        [Display(Name = "Ladefunktion")]
+        public Ladefunktion? Ladefunktion { get; set; }
+        [Display(Name = "Ladefunktion fritekst")]
+        public string? LadefunktionFritekst { get; set; }
         [Display(Name = "Løbenummer")]
         public string Loebenummer { get; set; }
         [Display(Name = "Våben type")]
         public VaabenType Type { get; set; }
         [Display(Name = "Våben status")]
         public VaabenStatus Status { get; set; }
-        public Ejer? Ejer { get; set; }
         [Display(Name = "Oprettet")]
         public DateTime? Created { get; set; }
         [Display(Name = "Oprettet af")]
@@ -28,14 +31,22 @@ namespace VaabenbogenConsumer.Models
         [Display(Name = "Udskrevet")]
         public bool? IsUdskrevet { get; set; }
         public DateTime? Udskrevet { get; set; }
+        [ValidateNever]
+        public Ejer Indskriver { get; set; }
+        [Display(Name = "Udskrevet til")]
+        public Ejer? UdskrevetTil {  get; set; }
 
         public Vaaben()
         {
             Created = DateTime.UtcNow;
             IsUdskrevet = false;
+            Navn = "";
+            Fabrikant = "";
+            Loebenummer = "00001";
+            Indskriver = new Ejer();
         }
 
-        public Vaaben(int id, string navn, string fabrikant, Ladefunktion ladefunktion, string loebenummer, VaabenType type, VaabenStatus status, Ejer? ejer)
+        public Vaaben(int id, string navn, string fabrikant, Ladefunktion ladefunktion, string loebenummer, VaabenType type, VaabenStatus status, Ejer indskriver)
         {
             Id = id;
             Navn = navn ?? throw new ArgumentNullException(nameof(navn));
@@ -44,9 +55,9 @@ namespace VaabenbogenConsumer.Models
             Loebenummer = loebenummer ?? throw new ArgumentNullException(nameof(loebenummer));
             Type = type;
             Status = status;
-            Ejer = ejer;
             Created = DateTime.UtcNow;
             IsUdskrevet = false;
+            Indskriver = indskriver;
         }
     }
 
@@ -69,8 +80,8 @@ namespace VaabenbogenConsumer.Models
 
     public enum Ladefunktion
     {
-        Manuel = 0,
-        Automatisk = 2,
-        Halvautomatisk = 3,
+        Enkeltlader = 0,
+        Repeter = 1,
+        Halvautomatisk = 2
     }
 }

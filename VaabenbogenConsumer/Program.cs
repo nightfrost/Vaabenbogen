@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 using VaabenbogenConsumer.Data;
 
 namespace VaabenbogenConsumer
@@ -13,7 +14,8 @@ namespace VaabenbogenConsumer
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("VaabenBogenConnection") ?? throw new InvalidOperationException("Connection string 'VaabenBogenConnection' not found.");
-            builder.Services.AddDbContext<VaabenBogenContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("VaabenBogenConnection")));
+            builder.Services.AddDbContext<VaabenBogenContext>(options =>
+                options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
