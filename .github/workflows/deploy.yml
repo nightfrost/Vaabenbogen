@@ -43,28 +43,32 @@ jobs:
         with:
           name: published-app
           path: publish/
-  
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
+
+      - name: Update Connection String
+        env:
+          CONNECTION_STRING_PROD: ${{ secrets.CONNECTION_STRING_PROD }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y jq
+          jq --arg connStr "$CONNECTION_STRING_PROD" '.ConnectionStrings.VaabenBogenConnection = $connStr' publish/appsettings.json > publish/appsettings.json.tmp
+          mv publish/appsettings.json.tmp publish/appsettings.json
   
       - name: Deploy to Server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
           SERVICE_NAME: "vaabenbogen.service"
         run: |
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > private_key && chmod 600 private_key
           eval `ssh-agent -s`
-          echo "$SSH_PASSWORD" | ssh-add private_key
+          ssh-add private_key
           
           # Test connection with timeout
-          timeout 10s sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo SSH connection successful!"
+          timeout 10s ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo SSH connection successful!"
           
           echo "Starting file transfer..."
-          sshpass -p "$SSH_PASSWORD" scp -v -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/var/www/vaabenbogen/VaabenbogenConsumer_1_0/
+          scp -v -o StrictHostKeyChecking=no -r publish/* $SERVER_USER@$SERVER_IP:/var/www/vaabenbogen/VaabenbogenConsumer_1_0/
           echo "File transfer completed"
 
           echo "Restarting service..."
-          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SSH_PASSWORD' | sudo -S systemctl restart $SERVICE_NAME && echo '$SSH_PASSWORD' | sudo -S systemctl status $SERVICE_NAME --no-pager"
+          ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SSH_PASSWORD' | sudo -S systemctl restart $SERVICE_NAME && echo '$SSH_PASSWORD' | sudo -S systemctl status $SERVICE_NAME --no-pager"
