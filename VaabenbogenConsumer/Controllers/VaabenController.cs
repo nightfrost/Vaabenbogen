@@ -48,7 +48,7 @@ namespace VaabenbogenConsumer.Controllers
                 && string.IsNullOrWhiteSpace(soegVaaben.Fabrikant)
                 && soegVaaben.Status == null
                 && soegVaaben.Ladefunktion == null
-                && string.IsNullOrWhiteSpace(soegVaaben.Loebenummer)
+                && string.IsNullOrWhiteSpace(soegVaaben.Bundstykkenummer)
                 && soegVaaben.Type == null)
             {
                 return await _context.Vaaben.Where(v => v.IsUdskrevet == soegVaaben.IsUdskrevet).ToListAsync();
@@ -75,9 +75,19 @@ namespace VaabenbogenConsumer.Controllers
                 query = query.Where(v => v.Ladefunktion == soegVaaben.Ladefunktion.Value);
             }
 
-            if (!string.IsNullOrWhiteSpace(soegVaaben.Loebenummer))
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Systemnummer))
             {
-                query = query.Where(v => v.Loebenummer == soegVaaben.Loebenummer);
+                query = query.Where(v => v.Systemnummer == soegVaaben.Systemnummer);
+            }
+
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Pibenummer))
+            {
+                query = query.Where(v => v.Pibenummer == soegVaaben.Pibenummer);
+            }
+
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Bundstykkenummer))
+            {
+                query = query.Where(v => v.Bundstykkenummer == soegVaaben.Bundstykkenummer);
             }
 
             if (soegVaaben.Type.HasValue)
@@ -331,7 +341,9 @@ namespace VaabenbogenConsumer.Controllers
                 return View(vaaben);
             try
             {
-                if (await VaabenExistsByLoebenummer(vaaben.Loebenummer)) throw new RecordAlreadyExistsException($"Loebenummer ({vaaben.Loebenummer}) eksistere i forvejen.");
+                if (vaaben.Pibenummer != null && await VaabenExistsByPibenummer(vaaben.Pibenummer)) throw new RecordAlreadyExistsException($"Pibenummer ({vaaben.Pibenummer}) eksistere i forvejen.");
+                if (vaaben.Systemnummer != null && await VaabenExistsByPibenummer(vaaben.Systemnummer)) throw new RecordAlreadyExistsException($"Pibenummer ({vaaben.Systemnummer}) eksistere i forvejen.");
+                if (vaaben.Bundstykkenummer != null && await VaabenExistsByPibenummer(vaaben.Bundstykkenummer)) throw new RecordAlreadyExistsException($"Pibenummer ({vaaben.Bundstykkenummer}) eksistere i forvejen.");
 
                 if (!string.IsNullOrWhiteSpace(indskrevetAf))
                 {
@@ -392,7 +404,7 @@ namespace VaabenbogenConsumer.Controllers
                 && string.IsNullOrWhiteSpace(soegVaaben.Fabrikant)
                 && soegVaaben.Status == null
                 && soegVaaben.Ladefunktion == null
-                && string.IsNullOrWhiteSpace(soegVaaben.Loebenummer)
+                && string.IsNullOrWhiteSpace(soegVaaben.Bundstykkenummer)
                 && soegVaaben.Type == null)
             {
                 return View(viewName: "Index", soegVaaben);
@@ -419,9 +431,19 @@ namespace VaabenbogenConsumer.Controllers
                 query = query.Where(v => v.Ladefunktion == soegVaaben.Ladefunktion.Value);
             }
 
-            if (!string.IsNullOrWhiteSpace(soegVaaben.Loebenummer))
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Systemnummer))
             {
-                query = query.Where(v => v.Loebenummer == soegVaaben.Loebenummer);
+                query = query.Where(v => v.Systemnummer == soegVaaben.Systemnummer);
+            }
+
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Pibenummer))
+            {
+                query = query.Where(v => v.Pibenummer == soegVaaben.Pibenummer);
+            }
+
+            if (!string.IsNullOrWhiteSpace(soegVaaben.Bundstykkenummer))
+            {
+                query = query.Where(v => v.Bundstykkenummer == soegVaaben.Bundstykkenummer);
             }
 
             if (soegVaaben.Type.HasValue)
@@ -511,9 +533,19 @@ namespace VaabenbogenConsumer.Controllers
             return await _context.Vaaben.AnyAsync(e => e.Id == id);
         }
 
-        private async Task<bool> VaabenExistsByLoebenummer(string loebenummer)
+        private async Task<bool> VaabenExistsBySystemnummer(string systemnummer)
         {
-            return await _context.Vaaben.AnyAsync(vaaben => vaaben.Loebenummer == loebenummer);
+            return await _context.Vaaben.AnyAsync(vaaben => vaaben.Systemnummer == systemnummer);
+        }
+
+        private async Task<bool> VaabenExistsByPibenummer(string pibenummber)
+        {
+            return await _context.Vaaben.AnyAsync(vaaben => vaaben.Pibenummer == pibenummber);
+        }
+
+        private async Task<bool> VaabenExistsByBundstykkenummer(string bundstykkenummer)
+        {
+            return await _context.Vaaben.AnyAsync(vaaben => vaaben.Bundstykkenummer == bundstykkenummer);
         }
 
         private async Task<object> AddNewCustomerToDB(AddCustomerViewModel addCustomerViewModel)
