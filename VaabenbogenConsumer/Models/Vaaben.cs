@@ -14,8 +14,9 @@ namespace VaabenbogenConsumer.Models
         public Ladefunktion? Ladefunktion { get; set; }
         [Display(Name = "Ladefunktion fritekst")]
         public string? LadefunktionFritekst { get; set; }
-        [Display(Name = "Løbenummer")]
-        public string Loebenummer { get; set; }
+        public string? Systemnummer { get; set; }
+        public string? Pibenummer { get; set; }
+        public string? Bundstykkenummer { get; set; }
         [Display(Name = "Våben type")]
         public VaabenType Type { get; set; }
         [Display(Name = "Våben status")]
@@ -42,22 +43,29 @@ namespace VaabenbogenConsumer.Models
             IsUdskrevet = false;
             Navn = "";
             Fabrikant = "";
-            Loebenummer = "00001";
             Indskriver = new Ejer();
         }
 
-        public Vaaben(int id, string navn, string fabrikant, Ladefunktion ladefunktion, string loebenummer, VaabenType type, VaabenStatus status, Ejer indskriver)
+        public Vaaben(int id, string navn, string fabrikant, Ladefunktion? ladefunktion, string? ladefunktionFritekst, string? systemnummer, string? pibenummer, string? bundstykkenummer, VaabenType type, VaabenStatus status, DateTime? created, string? createdBy, DateTime? updated, string? updatedBy, bool? isUdskrevet, DateTime? udskrevet, Ejer indskriver, Ejer? udskrevetTil)
         {
             Id = id;
             Navn = navn ?? throw new ArgumentNullException(nameof(navn));
             Fabrikant = fabrikant ?? throw new ArgumentNullException(nameof(fabrikant));
             Ladefunktion = ladefunktion;
-            Loebenummer = loebenummer ?? throw new ArgumentNullException(nameof(loebenummer));
+            LadefunktionFritekst = ladefunktionFritekst;
+            Systemnummer = systemnummer;
+            Pibenummer = pibenummer;
+            Bundstykkenummer = bundstykkenummer;
             Type = type;
             Status = status;
-            Created = DateTime.UtcNow;
-            IsUdskrevet = false;
-            Indskriver = indskriver;
+            Created = created;
+            CreatedBy = createdBy;
+            Updated = updated;
+            UpdatedBy = updatedBy;
+            IsUdskrevet = isUdskrevet;
+            Udskrevet = udskrevet;
+            Indskriver = indskriver ?? throw new ArgumentNullException(nameof(indskriver));
+            UdskrevetTil = udskrevetTil;
         }
     }
 
@@ -70,12 +78,11 @@ namespace VaabenbogenConsumer.Models
 
     public enum VaabenStatus
     {
-        
-        Reperation = 0,
-        Opbevaring = 1,
         [Display(Name = "Køb og salg")]
-        KoebOgSalg = 2,
-        Kommision = 3,
+        KoebOgSalg = 0,
+        Reparation = 2,
+        Opbevaring = 3,
+        Kommision = 4,
     }
 
     public enum Ladefunktion
