@@ -70,12 +70,11 @@ namespace VaabenbogenConsumer.Models
 
     public enum VaabenStatus
     {
-        
-        Reperation = 0,
-        Opbevaring = 1,
         [Display(Name = "Køb og salg")]
-        KoebOgSalg = 2,
-        Kommision = 3,
+        KoebOgSalg = 0,
+        Reparation = 2,
+        Opbevaring = 3,
+        Kommision = 4,
     }
 
     public enum Ladefunktion
